@@ -159,6 +159,19 @@ CREATE TABLE [item] (
 );
 -- Item table containing items related to products
 
+
+-- Table: itemImage
+CREATE TABLE itemImage (
+    image_id INT IDENTITY PRIMARY KEY, -- Primary key
+    item_id INT NOT NULL, -- Foreign key to Item table
+    img_url NVARCHAR(255) NOT NULL, -- Image URL
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    updated_at DATETIME DEFAULT GETDATE(), -- Last update datetime
+    FOREIGN KEY (item_id) REFERENCES item(item_id) -- Foreign key constraint
+);
+-- itemImage table containing items related to item
+
+
 -- Table: Variant
 CREATE TABLE [variant] (
     variant_id INT IDENTITY PRIMARY KEY, -- Primary key
@@ -194,25 +207,25 @@ CREATE TABLE [ItemVariant] (
 -- Table: ItemInventory
 CREATE TABLE [itemInventory] (
     inventory_id INT IDENTITY PRIMARY KEY, -- Primary key
-    item_id INT, -- Foreign key to Item table
-    variant_combination NVARCHAR(255), -- Variant combination
-    quantity INT, -- Quantity
-    discount INT, -- Discount
-    price MONEY, -- Price
-    status INT, -- Status
-    created_at DATETIME, -- Creation datetime
-    updated_at DATETIME -- Last update datetime
+    item_id INT DEFAULT NULL, -- Foreign key to Item table
+    variant_combination NVARCHAR(255) DEFAULT N'0-0', -- Variant combination
+    quantity INT DEFAULT 0, -- Quantity
+    discount INT DEFAULT 0, -- Discount
+    price MONEY DEFAULT 0, -- Price
+    status INT DEFAULT 1, -- Status
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    updated_at DATETIME DEFAULT GETDATE()-- Last update datetime
 );
 -- ItemInventory table containing inventory details for items
 
 -- Table: RefreshToken
 CREATE TABLE [refreshToken] (
     token_id INT IDENTITY PRIMARY KEY, -- Primary key
-    account_id INT, -- Foreign key to Account table
-    token UNIQUEIDENTIFIER, -- Token
-    type_id INT, -- Foreign key to TokenType table
-    created_at DATETIME, -- Creation datetime
-    expires_at DATETIME, -- Expiration datetime
+    account_id INT DEFAULT NULL, -- Foreign key to Account table
+    token UNIQUEIDENTIFIER DEFAULT NULL, -- Token
+    type_id INT DEFAULT NULL, -- Foreign key to TokenType table
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    expires_at DATETIME DEFAULT GETDATE(), -- Expiration datetime
     status INT -- Status
 );
 -- RefreshToken table containing refresh tokens
@@ -220,35 +233,35 @@ CREATE TABLE [refreshToken] (
 -- Table: TokenType
 CREATE TABLE [tokenType] (
     token_type_id INT IDENTITY PRIMARY KEY, -- Primary key
-    title NVARCHAR(50) -- Title
+    title NVARCHAR(50) DEFAULT N'Default Token Type Name' -- Title
 );
 -- TokenType table containing token types
 
 -- Table: AuditLog
 CREATE TABLE [auditLog] (
     log_id INT IDENTITY PRIMARY KEY, -- Primary key
-    account_id INT, -- Foreign key to Account table
-    action NVARCHAR(255), -- Action
-    entity NVARCHAR(255), -- Entity
-    entity_id INT, -- Entity ID
-    content NTEXT, -- Content
-    created_at DATETIME, -- Creation datetime
-    ip_address NVARCHAR(255), -- IP address
-    user_agent NVARCHAR(255) -- User agent
+    account_id INT DEFAULT NULL, -- Foreign key to Account table
+    action NVARCHAR(255) DEFAULT N'Default Action', -- Action
+    entity NVARCHAR(255) DEFAULT N'Default Entity', -- Entity
+    entity_id INT DEFAULT NULL, -- Entity ID
+    content NTEXT DEFAULT N'Default Audit Log Content', -- Content
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    ip_address NVARCHAR(255) DEFAULT N'0.0.0.0', -- IP address
+    user_agent NVARCHAR(255) DEFAULT N'Default Browser'-- User agent
 );
 -- AuditLog table containing logs of actions
 
 -- Table: Voucher
 CREATE TABLE [voucher] (
     voucher_id INT IDENTITY PRIMARY KEY, -- Primary key
-    code NVARCHAR(255), -- Voucher code
-    discount INT, -- Discount amount
-    type NVARCHAR(255), -- Voucher type
-    created_at DATETIME, -- Creation datetime
-    expires_at DATETIME, -- Expiration datetime
-    status INT, -- Status
-    usage_limit INT, -- Usage limit
-    used_count INT -- Used count
+    code NVARCHAR(20) DEFAULT N'VOUCHER-DEFAULT', -- Voucher code
+    discount INT DEFAULT 0, -- Discount amount
+    type NVARCHAR(255) DEFAULT NULL, -- Voucher type
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    expires_at DATETIME DEFAULT GETDATE(), -- Expiration datetime
+    status INT DEFAULT 1, -- Status
+    usage_limit INT DEFAULT 0, -- Usage limit
+    used_count INT DEFAULT 0 -- Used count
 );
 -- Voucher table containing voucher details
 
@@ -264,6 +277,7 @@ DBCC CHECKIDENT ('productType', RESEED, 100001);
 DBCC CHECKIDENT ('vendor', RESEED, 100001);
 DBCC CHECKIDENT ('product', RESEED, 100001);
 DBCC CHECKIDENT ('item', RESEED, 100001);
+DBCC CHECKIDENT ('itemImage', RESEED, 100001);
 DBCC CHECKIDENT ('variant', RESEED, 100001);
 DBCC CHECKIDENT ('variantValue', RESEED, 100001);
 DBCC CHECKIDENT ('itemVariant', RESEED, 100001);
@@ -383,8 +397,8 @@ VALUES
 -- Thêm dữ liệu vào bảng product
 INSERT INTO [product] (category_id, type_id, vendor_id, title, metaTitle, content, slug, sku)
 VALUES
-    (100008, 100001, 100003, N'Neo65', N'Bàn phím cơ Neo65', N'Sản phẩm bàn phím cơ Neo65 đến từ Neo Studio', '/product/neo65', 'NEO65'),
-    (100008, 100001, 100002, N'QK65', N'Bàn phím cơ QK65', N'Sản phẩm bàn phím cơ QK65 đến từ QK Studio', '/product/qk65', 'QK65');
+    (100008, 100001, 100003, N'Neo65', N'Bàn phím cơ Neo65', N'Sản phẩm bàn phím cơ Neo65 đến từ Neo Studio', '/collections/neo65', 'NEO65'),
+    (100008, 100001, 100002, N'QK65', N'Bàn phím cơ QK65', N'Sản phẩm bàn phím cơ QK65 đến từ QK Studio', '/collections/qk65', 'QK65');
 
 
 -- Thêm dữ liệu vào bảng Item cho sản phẩm với product_id 100001
