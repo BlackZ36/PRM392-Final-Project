@@ -136,6 +136,7 @@ CREATE TABLE [product] (
     content NTEXT DEFAULT N'Default Product Description', -- Content
     slug NVARCHAR(255) DEFAULT N'/product/product', -- Slug
     sku NVARCHAR(255) DEFAULT N'PRD', -- SKU
+	item_count INT DEFAULT 0, --
 	view_time INT DEFAULT 0, -- product view time count
     status INT DEFAULT 1, -- Status
     created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
