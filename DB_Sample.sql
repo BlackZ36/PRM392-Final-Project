@@ -18,7 +18,7 @@ USE ZStore_Sample;
 GO
 
 -- Table: Address
-CREATE TABLE [Address] (
+CREATE TABLE [address] (
     address_id INT IDENTITY PRIMARY KEY, -- Primary key
     account_id INT, -- Foreign key to Account table
     country NVARCHAR(255), -- Country
@@ -31,7 +31,7 @@ CREATE TABLE [Address] (
 -- Address table containing addresses related to accounts
 
 -- Table: Account
-CREATE TABLE [Account] (
+CREATE TABLE [account] (
     account_id INT IDENTITY PRIMARY KEY, -- Primary key
     first_name NVARCHAR(255), -- First name
     last_name NVARCHAR(255), -- Last name
@@ -46,7 +46,7 @@ CREATE TABLE [Account] (
 -- Account table containing user account details
 
 -- Table: Permission
-CREATE TABLE [Permission] (
+CREATE TABLE [permission] (
     permission_id INT IDENTITY PRIMARY KEY, -- Primary key
     name NVARCHAR(255), -- Permission name
     description NVARCHAR(255), -- Description
@@ -57,7 +57,7 @@ CREATE TABLE [Permission] (
 -- Permission table containing permission details
 
 -- Table: RolePermission
-CREATE TABLE [RolePermission] (
+CREATE TABLE [rolePermission] (
     role_permission_id INT IDENTITY PRIMARY KEY, -- Primary key
     role_id INT, -- Foreign key to Role table
     permission_id INT -- Foreign key to Permission table
@@ -65,7 +65,7 @@ CREATE TABLE [RolePermission] (
 -- RolePermission table containing mappings between roles and permissions
 
 -- Table: AccountRole
-CREATE TABLE [AccountRole] (
+CREATE TABLE [accountRole] (
     account_role_id INT IDENTITY PRIMARY KEY, -- Primary key
     account_id INT, -- Foreign key to Account table
     role_id INT -- Foreign key to Role table
@@ -73,7 +73,7 @@ CREATE TABLE [AccountRole] (
 -- AccountRole table containing mappings between accounts and roles
 
 -- Table: Role
-CREATE TABLE [Role] (
+CREATE TABLE [role] (
     role_id INT IDENTITY PRIMARY KEY, -- Primary key
     title NVARCHAR(255), -- Role name
     content NVARCHAR(255), -- Description
@@ -85,13 +85,13 @@ CREATE TABLE [Role] (
 CREATE TABLE [category] (
     category_id INT IDENTITY PRIMARY KEY, -- Primary key
     parent_category_id INT DEFAULT NULL, -- Foreign key to self
-    title VARCHAR(255) DEFAULT 'Default Category Title', -- Title
-    metaTitle VARCHAR(255) DEFAULT 'Default Category Meta Title', -- Meta title
-    content TEXT DEFAULT 'Default Category Content', -- Content
-    slug VARCHAR(255) DEFAULT '/default-category-slug', -- Slug
-    sku VARCHAR(255) DEFAULT 'DEFAULTCATEGORY', -- SKU
+    title NVARCHAR(255) DEFAULT N'Default Category Title', -- Title
+    metaTitle NVARCHAR(255) DEFAULT N'Default Category Meta Title', -- Meta title
+    content NTEXT DEFAULT N'Default Category Content', -- Content
+    slug NVARCHAR(255) DEFAULT N'/default-category-slug', -- Slug
+    sku NVARCHAR(255) DEFAULT N'DEFAULTCATEGORY', -- SKU
     status INT DEFAULT 1,
-	[order] int DEFAULT 0, -- Status
+	[order] INT DEFAULT 0, -- Status
     created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
     updated_at DATETIME DEFAULT GETDATE()-- Last update datetime
 );
@@ -100,12 +100,12 @@ CREATE TABLE [category] (
 -- Table: ProductType
 CREATE TABLE [productType] (
     product_type_id INT IDENTITY PRIMARY KEY, -- Primary key
-    title VARCHAR(255) DEFAULT 'Default Product Type Title', -- Title
-    metaTitle VARCHAR(255) DEFAULT 'Default Product Type Meta Title', -- Meta title
-    content TEXT DEFAULT 'Default Product Type Description', -- Content
-    slug VARCHAR(255) DEFAULT '/type/default-product-type', -- Slug
-    sku VARCHAR(255) DEFAULT 'PT', -- SKU
-	[order] int DEFAULT NULL,
+    title NVARCHAR(255) DEFAULT N'Default Product Type Title', -- Title
+    metaTitle NVARCHAR(255) DEFAULT N'Default Product Type Meta Title', -- Meta title
+    content NTEXT DEFAULT N'Default Product Type Description', -- Content
+    slug NVARCHAR(255) DEFAULT N'/type/default-product-type', -- Slug
+    sku NVARCHAR(255) DEFAULT N'PT', -- SKU
+	[order] INT DEFAULT NULL,
     status INT DEFAULT 1, -- Status
     created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
     updated_at DATETIME DEFAULT GETDATE() -- Last update datetime
@@ -115,10 +115,10 @@ CREATE TABLE [productType] (
 -- Table: Vendor
 CREATE TABLE [vendor] (
     vendor_id INT IDENTITY PRIMARY KEY, -- Primary key
-    title VARCHAR(255) DEFAULT 'Default Vendor Title', -- Title
-    content TEXT DEFAULT 'Default Vendor Description', -- Content
-    sku VARCHAR(255) DEFAULT 'VD', -- SKU
-	[order] int DEFAULT NULL, --order sort of vendor
+    title NVARCHAR(255) DEFAULT N'Default Vendor Title', -- Title
+    content NTEXT DEFAULT N'Default Vendor Description', -- Content
+    sku NVARCHAR(255) DEFAULT N'VD', -- SKU
+	[order] INT DEFAULT NULL, --order sort of vendor
     status INT DEFAULT 1, -- Status
     created_at DATETIME DEFAULT GETDATE(), -- Creation timestamp
     updated_at DATETIME DEFAULT GETDATE() -- Last update datetime
@@ -128,40 +128,41 @@ CREATE TABLE [vendor] (
 -- Table: Product
 CREATE TABLE [product] (
     product_id INT IDENTITY PRIMARY KEY, -- Primary key
-    category_id INT, -- Foreign key to Category table
-    type_id INT, -- Foreign key to ProductType table
-    vendor_id INT, -- Foreign key to Vendor table
-    title VARCHAR(255), -- Title
-    metaTitle VARCHAR(255), -- Meta title
-    content TEXT, -- Content
-    slug VARCHAR(255), -- Slug
-    sku VARCHAR(255), -- SKU
-    status INT, -- Status
-    created_at DATETIME, -- Creation datetime
-    updated_at DATETIME -- Last update datetime
+    category_id INT DEFAULT NULL, -- Foreign key to Category table
+    type_id INT DEFAULT NULL, -- Foreign key to ProductType table
+    vendor_id INT DEFAULT NULL, -- Foreign key to Vendor table
+    title NVARCHAR(255) DEFAULT N'Default Product Title', -- Title
+    metaTitle NVARCHAR(255) DEFAULT N'Default Product Meta Title', -- Meta title
+    content NTEXT DEFAULT N'Default Product Description', -- Content
+    slug NVARCHAR(255) DEFAULT N'/product/product', -- Slug
+    sku NVARCHAR(255) DEFAULT N'PRD', -- SKU
+	view_time INT DEFAULT 0, -- product view time count
+    status INT DEFAULT 1, -- Status
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    updated_at DATETIME DEFAULT GETDATE() -- Last update datetime
 );
 -- Product table containing product details
 
 -- Table: Item
-CREATE TABLE [Item] (
+CREATE TABLE [item] (
     item_id INT IDENTITY PRIMARY KEY, -- Primary key
-    product_id INT, -- Foreign key to Product table
-    title VARCHAR(255), -- Title
-    metaTitle VARCHAR(255), -- Meta title
-    content TEXT, -- Content
-    slug VARCHAR(255), -- Slug
-    sku VARCHAR(255), -- SKU
-    status INT, -- Status
-    created_at DATETIME, -- Creation datetime
-    updated_at DATETIME -- Last update datetime
+    product_id INT DEFAULT NULL, -- Foreign key to Product table
+    title NVARCHAR(255) DEFAULT N'Default Product Item Title', -- Title
+    metaTitle NVARCHAR(255) DEFAULT N'Default Product Item Meta Title', -- Meta title
+    content NTEXT DEFAULT N'Default Product Item Description', -- Content
+    slug NVARCHAR(255) DEFAULT N'/product/product-item', -- Slug
+    sku NVARCHAR(255) DEFAULT N'ITEM', -- SKU
+    status INT DEFAULT 1, -- Status
+    created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
+    updated_at DATETIME DEFAULT GETDATE()-- Last update datetime
 );
 -- Item table containing items related to products
 
 -- Table: Variant
 CREATE TABLE [variant] (
     variant_id INT IDENTITY PRIMARY KEY, -- Primary key
-    title VARCHAR(255) DEFAULT 'Default Variant Title', -- Title
-    content TEXT DEFAULT 'Default Variant Content', -- Content
+    title NVARCHAR(255) DEFAULT N'Default Variant Title', -- Title
+    content NTEXT DEFAULT N'Default Variant Content', -- Content
     status INT DEFAULT 1, -- Status
     created_at DATETIME DEFAULT GETDATE(), -- Creation datetime
     updated_at DATETIME DEFAULT GETDATE()-- Last update datetime
@@ -171,18 +172,21 @@ CREATE TABLE [variant] (
 -- Table: VariantValue
 CREATE TABLE [variantValue] (
     variant_value_id INT IDENTITY PRIMARY KEY, -- Primary key
-    variant_id INT, -- Foreign key to Variant table
-    item_id INT, -- Foreign key to Item table
-    value VARCHAR(255), -- Value
-    img_url_id INT -- Image URL ID
+    variant_id INT DEFAULT NULL, -- Foreign key to Variant table
+    item_id INT DEFAULT NULL, -- Foreign key to Item table
+    value NVARCHAR(255) DEFAULT 'Default Variant Value', -- Value
+    img_url NVARCHAR(255) DEFAULT 'https://example.com/product-variant-image.png' -- Image URL ID
 );
 -- VariantValue table containing values for variants
 
 -- Table: ItemVariant
 CREATE TABLE [ItemVariant] (
     item_variant_id INT IDENTITY PRIMARY KEY, -- Primary key
-    item_id INT, -- Foreign key to Item table
-    variant_id INT -- Foreign key to Variant table
+    item_id INT DEFAULT NULL, -- Foreign key to Item table
+    variant_id INT DEFAULT NULL, -- Foreign key to Variant table
+	status INT DEFAULT 1, --
+	created_date DATETIME DEFAULT GETDATE(), --
+	updated_date DATETIME DEFAULT GETDATE() --
 );
 -- ItemVariant table containing mappings between items and variants
 
@@ -190,7 +194,7 @@ CREATE TABLE [ItemVariant] (
 CREATE TABLE [itemInventory] (
     inventory_id INT IDENTITY PRIMARY KEY, -- Primary key
     item_id INT, -- Foreign key to Item table
-    variant_combination VARCHAR(255), -- Variant combination
+    variant_combination NVARCHAR(255), -- Variant combination
     quantity INT, -- Quantity
     discount INT, -- Discount
     price MONEY, -- Price
@@ -223,22 +227,22 @@ CREATE TABLE [tokenType] (
 CREATE TABLE [auditLog] (
     log_id INT IDENTITY PRIMARY KEY, -- Primary key
     account_id INT, -- Foreign key to Account table
-    action VARCHAR(255), -- Action
-    entity VARCHAR(255), -- Entity
+    action NVARCHAR(255), -- Action
+    entity NVARCHAR(255), -- Entity
     entity_id INT, -- Entity ID
-    content TEXT, -- Content
+    content NTEXT, -- Content
     created_at DATETIME, -- Creation datetime
-    ip_address VARCHAR(255), -- IP address
-    user_agent VARCHAR(255) -- User agent
+    ip_address NVARCHAR(255), -- IP address
+    user_agent NVARCHAR(255) -- User agent
 );
 -- AuditLog table containing logs of actions
 
 -- Table: Voucher
 CREATE TABLE [voucher] (
     voucher_id INT IDENTITY PRIMARY KEY, -- Primary key
-    code VARCHAR(255), -- Voucher code
+    code NVARCHAR(255), -- Voucher code
     discount INT, -- Discount amount
-    type VARCHAR(255), -- Voucher type
+    type NVARCHAR(255), -- Voucher type
     created_at DATETIME, -- Creation datetime
     expires_at DATETIME, -- Expiration datetime
     status INT, -- Status
@@ -325,47 +329,119 @@ ADD CONSTRAINT FK_AuditLog_Account FOREIGN KEY (account_id) REFERENCES Account(a
 -- Thêm dữ liệu vào bảng category
 INSERT INTO category (parent_category_id, title, metaTitle, content, slug, sku, [order])
 VALUES
-    (NULL,'Keyboard','Keyboard','Keyboard Category Description','/keyboard','KB',1),
-	(NULL,'Keycap','Keycap','Keycap Category Description','/keycap','KC',2),
-	(NULL,'Switch','Switch','Switch Category Description','/switch','SW',3),
-	(NULL,'Stabilizer','Stabilizer','Stabilizer Category Description','/stab','ST',4),
-	(NULL,'Accessory','Accessory','Accessory Category Description','/accessory','AC',5),
+    (NULL,N'Keyboard',N'Keyboard',N'Keyboard Category Description','/keyboard','KB',1),
+	(NULL,N'Keycap',N'Keycap',N'Keycap Category Description','/keycap','KC',2),
+	(NULL,N'Switch',N'Switch',N'Switch Category Description','/switch','SW',3),
+	(NULL,N'Stabilizer',N'Stabilizer',N'Stabilizer Category Description','/stab','ST',4),
+	(NULL,N'Accessory',N'Accessory',N'Accessory Category Description','/accessory','AC',5),
 
 	--keyboard parent category
-	(100001,'40%','40% Keyboard Layout','40% Keyboard Layout Desciption','/keyboard/40%','40', 1),
-	(100001,'60%','60% Keyboard Layout','60% Keyboard Layout Desciption','/keyboard/60%','60', 2),
-	(100001,'65%','65% Keyboard Layout','65% Keyboard Layout Desciption','/keyboard/65%','65', 3),
-	(100001,'75%','75% Keyboard Layout','75% Keyboard Layout Desciption','/keyboard/75%','75', 4),
-	(100001,'TKL','TKL Keyboard Layout','TKL Keyboard Layout Desciption','/keyboard/tkl','80', 5),
-	(100001,'ALICE','Alice Keyboard Layout','Alice Keyboard Layout Desciption','/keyboard/alice','AL', 6),
+	(100001,N'40%',N'40% Keyboard Layout',N'40% Keyboard Layout Desciption','/keyboard/40%','40', 1),
+	(100001,N'60%',N'60% Keyboard Layout',N'60% Keyboard Layout Desciption','/keyboard/60%','60', 2),
+	(100001,N'65%',N'65% Keyboard Layout',N'65% Keyboard Layout Desciption','/keyboard/65%','65', 3),
+	(100001,N'75%',N'75% Keyboard Layout',N'75% Keyboard Layout Desciption','/keyboard/75%','75', 4),
+	(100001,N'TKL',N'TKL Keyboard Layout',N'TKL Keyboard Layout Desciption','/keyboard/tkl','80', 5),
+	(100001,N'ALICE',N'Alice Keyboard Layout',N'Alice Keyboard Layout Desciption','/keyboard/alice','AL', 6),
 
 	--keycap parent category
-	(100002,'ABS','ABS Keycap','ABS Keycap Desciption','/keycap/abs','ABS', 1),
-	(100002,'PBT','PBT Keycap','PBT Keyca Desciption','/keycap/pbt','PBT', 2);
+	(100002,N'ABS',N'ABS Keycap',N'ABS Keycap Desciption','/keycap/abs','ABS', 1),
+	(100002,N'PBT',N'PBT Keycap',N'PBT Keyca Desciption','/keycap/pbt','PBT', 2);
 
 -- thêm dữ liệu vào bảng product type
 INSERT INTO productType (title, metaTitle, content, slug, sku, [order])
 VALUES
-    ('In Stock', 'In Stock - Meta Title', 'Products in stock and available for purchase', '/type/in-stock', 'IS', 1),
-    ('Order', 'Order - Meta Title', 'Products available for order but not in stock', '/type/order', 'OD', 2);
+    (N'In Stock', N'In Stock - Meta Title', N'Products in stock and available for purchase', '/type/in-stock', 'IS', 1),
+    (N'Order', N'Order - Meta Title', N'Products available for order but not in stock', '/type/order', 'OD', 2);
 
 
 -- Thêm dữ liệu vào bảng vendor
 INSERT INTO vendor (title, content, sku, [order])
 VALUES
-    ('GMK', 'Description for Vendor GMK', 'GMK', 1),
-	('QK', 'Description for Vendor QK', 'QK', 2),
-	('NEO', 'Description for Vendor NEO', 'NEO', 3),
-	('WUQUE', 'Description for Vendor Wuque', 'WUQUE', 4);
+    (N'GMK', N'Description for Vendor GMK', 'GMK', 1),
+	(N'QK', N'Description for Vendor QK', 'QK', 2),
+	(N'NEO', N'Description for Vendor NEO', 'NEO', 3),
+	(N'WUQUE', N'Description for Vendor Wuque', 'WUQUE', 4);
 
 
 -- Thêm dữ liệu vào bảng variant
 INSERT INTO variant (title, content)
 VALUES
-    ('Color', 'Content for Variant Color'),
-	('Material', 'Content for Variant Material'),
-	('Mode', 'Content for Variant Mode'),
-	('Type', 'Content for Variant Type');
+    (N'Color', N'Content for Variant Color'),
+	(N'Material', N'Content for Variant Material'),
+	(N'Mode', N'Content for Variant Mode'),
+	(N'Type', N'Content for Variant Type'),
+	(N'Mode', N'Content for Variant Mode'),
+	(N'Case', N'Content for Variant Case'),
+	(N'PCB', N'Content for Variant PCB'),
+	(N'Plate', N'Content for Variant Plate'),
+	(N'Add-ons', N'Content for Variant Add-ons'),
+	(N'Weight', N'Content for Variant Weight'),
+	(N'Switch', N'Content for Variant Switch');
 
 
--- Thêm dữ liệu vào bảng variant value
+-- Thêm dữ liệu vào bảng product
+INSERT INTO [product] (category_id, type_id, vendor_id, title, metaTitle, content, slug, sku)
+VALUES
+    (100008, 100001, 100003, N'Neo65', N'Bàn phím cơ Neo65', N'Sản phẩm bàn phím cơ Neo65 đến từ Neo Studio', '/product/neo65', 'NEO65'),
+    (100008, 100001, 100002, N'QK65', N'Bàn phím cơ QK65', N'Sản phẩm bàn phím cơ QK65 đến từ QK Studio', '/product/qk65', 'QK65');
+
+
+-- Thêm dữ liệu vào bảng Item cho sản phẩm với product_id 100001
+INSERT INTO [Item] (product_id, title, metaTitle, content, slug, sku)
+VALUES
+    (100001, N'[Case] NEO65', N'Meta Title for [Case] NEO65', N'Description for [Case] NEO65', '/product/neo65-case', 'CASE'),
+    (100001, N'[PCB] NEO65', N'Meta Title for [PCB] NEO65', N'Description for [PCB] NEO65', '/product/neo65-pcb', 'PCB'),
+    (100001, N'[Plate] NEO65', N'Meta Title for [Plate] NEO65', N'Description for [Plate] NEO65', '/product/neo65-plate', 'PLATE'),
+    (100001, N'[Weight] NEO65', N'Meta Title for [Weight] NEO65', N'Description for [Weight] NEO65', '/product/neo65-weight', 'WEIGHT'),
+    (100001, N'[Add-ons] NEO65', N'Meta Title for [Add-ons] NEO65', N'Description for [Add-ons] NEO65', '/product/neo65-add-ons', 'ADDONS');
+
+
+-- Bảng variant_value
+INSERT INTO variantValue (variant_id, item_id, value, img_url)
+VALUES
+    -- Case values
+    (100006, 100001, N'Black', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Green', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Milky White', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Navy', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Purple', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Red', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Silver', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'White', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100001, N'Yellow', 'https://dummyimage.com/1280x720/cccccc/000'),
+
+	-- PCB values
+	(100007, 100002, N'3 Mode - Hotswap', 'https://dummyimage.com/1280x720/cccccc/000'),
+	(100007, 100002, N'1 Mode - Hotswap', 'https://dummyimage.com/1280x720/cccccc/000'),
+	(100007, 100002, N'1 Mode - Solder', 'https://dummyimage.com/1280x720/cccccc/000'),
+
+	-- Plate values
+	(100008, 100003, N'Alu', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100003, N'FR4', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100003, N'PC', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100003, N'POM', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100003, N'Carbon Fiber', 'https://dummyimage.com/1280x720/cccccc/000'),
+
+	-- Weight values
+    (100010, 100004, N'Brass', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100010, 100004, N'Copper', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100010, 100004, N'Mirror Golden', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100010, 100004, N'Mirror Dusk', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100010, 100004, N'Mirror Chroma', 'https://dummyimage.com/1280x720/cccccc/000'),
+
+	-- Add-ons values
+    (100009, 100005, N'Daughter-board + Cable', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100009, 100005, N'O-ring', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100009, 100005, N'Rubber Feet', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100009, 100005, N'Gaskets', 'https://dummyimage.com/1280x720/cccccc/000');
+
+
+
+-- Bảng item_variant
+INSERT INTO ItemVariant (item_id, variant_id)
+VALUES
+    (100001, 100006),
+    (100002, 100007),
+    (100003, 100008),
+    (100004, 100009),
+    (100005, 100010);
