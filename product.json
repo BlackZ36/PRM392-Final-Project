@@ -1,0 +1,251 @@
+{
+  "product_id": 100001,
+  "category_id": 1,
+  "type_id": 1,
+  "vendor_id": 1,
+  "title": "NEO65",
+  "metaTitle": "Meta Title for NEO65",
+  "content": "Description for NEO65",
+  "slug": "/product/neo65",
+  "sku": "NEO65",
+  "status": 1,
+  "created_at": "2024-06-06T12:00:00Z",
+  "updated_at": "2024-06-06T12:00:00Z",
+  "items": [
+    {
+      "item_id": 100001,
+      "product_id": 100001,
+      "title": "[Case] NEO65",
+      "metaTitle": "Meta Title for [Case] NEO65",
+      "content": "Description for [Case] NEO65",
+      "slug": "/product/neo65-case",
+      "sku": "NEO65-CASE",
+      "status": 1,
+      "created_at": "2024-06-06T12:00:00Z",
+      "updated_at": "2024-06-06T12:00:00Z",
+      "variants": [
+        {
+          "variant_id": 100001,
+          "title": "Color",
+          "content": "Color options for NEO65",
+          "values": [
+            {
+              "variant_value_id": 100001,
+              "value": "Black",
+              "img_url_id": 1
+            },
+            {
+              "variant_value_id": 100002,
+              "value": "Green",
+              "img_url_id": 2
+            },
+            {
+              "variant_value_id": 100003,
+              "value": "Milky White",
+              "img_url_id": 3
+            },
+            {
+              "variant_value_id": 100004,
+              "value": "Navy",
+              "img_url_id": 4
+            },
+            {
+              "variant_value_id": 100005,
+              "value": "Purple",
+              "img_url_id": 5
+            },
+            {
+              "variant_value_id": 100006,
+              "value": "Red",
+              "img_url_id": 6
+            },
+            {
+              "variant_value_id": 100007,
+              "value": "Silver",
+              "img_url_id": 7
+            },
+            {
+              "variant_value_id": 100008,
+              "value": "White",
+              "img_url_id": 8
+            },
+            {
+              "variant_value_id": 100009,
+              "value": "Yellow",
+              "img_url_id": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_id": 100002,
+      "product_id": 100001,
+      "title": "[PCB] NEO65",
+      "metaTitle": "Meta Title for [PCB] NEO65",
+      "content": "Description for [PCB] NEO65",
+      "slug": "/product/neo65-pcb",
+      "sku": "NEO65-PCB",
+      "status": 1,
+      "created_at": "2024-06-06T12:00:00Z",
+      "updated_at": "2024-06-06T12:00:00Z",
+      "variants": [
+        {
+          "variant_id": 100002,
+          "title": "Type",
+          "content": "Type options for NEO65",
+          "values": [
+            {
+              "variant_value_id": 100010,
+              "value": "3 Mode Hotswaps",
+              "img_url_id": 10
+            },
+            {
+              "variant_value_id": 100011,
+              "value": "1 Mode Wired Hotswaps",
+              "img_url_id": 11
+            },
+            {
+              "variant_value_id": 100012,
+              "value": "1 Mode Solder PCB",
+              "img_url_id": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_id": 100003,
+      "product_id": 100001,
+      "title": "[Plate] NEO65",
+      "metaTitle": "Meta Title for [Plate] NEO65",
+      "content": "Description for [Plate] NEO65",
+      "slug": "/product/neo65-plate",
+      "sku": "NEO65-PLATE",
+      "status": 1,
+      "created_at": "2024-06-06T12:00:00Z",
+      "updated_at": "2024-06-06T12:00:00Z",
+      "variants": [
+        {
+          "variant_id": 100003,
+          "title": "Material",
+          "content": "Material options for NEO65",
+          "values": [
+            {
+              "variant_value_id": 100013,
+              "value": "Alu",
+              "img_url_id": 13
+            },
+            {
+              "variant_value_id": 100014,
+              "value": "FR4",
+              "img_url_id": 14
+            },
+            {
+              "variant_value_id": 100015,
+              "value": "PC",
+              "img_url_id": 15
+            },
+            {
+              "variant_value_id": 100016,
+              "value": "POM",
+              "img_url_id": 16
+            },
+            {
+              "variant_value_id": 100017,
+              "value": "Carbon Fiber",
+              "img_url_id": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_id": 100004,
+      "product_id": 100001,
+      "title": "[Weight] NEO65",
+      "metaTitle": "Meta Title for [Weight] NEO65",
+      "content": "Description for [Weight] NEO65",
+      "slug": "/product/neo65-weight",
+      "sku": "NEO65-WEIGHT",
+      "status": 1,
+      "created_at": "2024-06-06T12:00:00Z",
+      "updated_at": "2024-06-06T12:00:00Z",
+      "variants": [
+        {
+          "variant_id": 100004,
+          "title": "Material",
+          "content": "Material options for NEO65",
+          "values": [
+            {
+              "variant_value_id": 100018,
+              "value": "Brass",
+              "img_url_id": 18
+            },
+            {
+              "variant_value_id": 100019,
+              "value": "Copper",
+              "img_url_id": 19
+            },
+            {
+              "variant_value_id": 100020,
+              "value": "Mirror Golden",
+              "img_url_id": 20
+            },
+            {
+              "variant_value_id": 100021,
+              "value": "Mirror Dusk",
+              "img_url_id": 21
+            },
+            {
+              "variant_value_id": 100022,
+              "value": "Mirror Chroma",
+              "img_url_id": 22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "item_id": 100005,
+      "product_id": 100001,
+      "title": "[Add-ons] NEO65",
+      "metaTitle": "Meta Title for [Add-ons] NEO65",
+      "content": "Description for [Add-ons] NEO65",
+      "slug": "/product/neo65-add-ons",
+      "sku": "NEO65-ADDONS",
+      "status": 1,
+      "created_at": "2024-06-06T12:00:00Z",
+      "updated_at": "2024-06-06T12:00:00Z",
+      "variants": [
+        {
+          "variant_id": 100005,
+          "title": "Option",
+          "content": "Option options for NEO65",
+          "values": [
+            {
+              "variant_value_id": 100023,
+              "value": "Daughter-board + Cable",
+              "img_url_id": 23
+            },
+            {
+              "variant_value_id": 100024,
+              "value": "O-ring",
+              "img_url_id": 24
+            },
+            {
+              "variant_value_id": 100025,
+              "value": "Rubber Feet",
+              "img_url_id": 25
+            },
+            {
+              "variant_value_id": 100026,
+              "value": "Gaskets",
+              "img_url_id": 26
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
