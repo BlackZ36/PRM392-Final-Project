@@ -149,7 +149,82 @@
         "vendor_id": 100002,
         "title": "QK"
       },
-      "items": []
+      "items": [
+        {
+          "item_id": 100006,
+          "title": "[Case] QK65",
+          "metaTitle": "Meta Title for [Case] QK65",
+          "content": "Description for [Case] QK65",
+          "slug": "/product/qk65-case",
+          "sku": "CASE",
+          "variants": [
+            {
+              "variant_id": 100006,
+              "title": "Case",
+              "values": [
+                {"value": "Black", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "Green", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "Purple", "img_url": "https://dummyimage.com/1280x720/cccccc/000"}
+              ]
+            }
+          ]
+        },
+        {
+          "item_id": 100007,
+          "title": "[PCB] QK65",
+          "metaTitle": "Meta Title for [PCB] QK65",
+          "content": "Description for [PCB] QK65",
+          "slug": "/product/qk65-pcb",
+          "sku": "PCB",
+          "variants": [
+            {
+              "variant_id": 100007,
+              "title": "PCB",
+              "values": [
+                {"value": "3 Mode - Hotswap", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "1 Mode - Hotswap", "img_url": "https://dummyimage.com/1280x720/cccccc/000"}
+              ]
+            }
+          ]
+        },
+        {
+          "item_id": 100008,
+          "title": "[Plate] QK65",
+          "metaTitle": "Meta Title for [Plate] QK65",
+          "content": "Description for [Plate] QK65",
+          "slug": "/product/qk65-plate",
+          "sku": "PLATE",
+          "variants": [
+            {
+              "variant_id": 100008,
+              "title": "Plate",
+              "values": [
+                {"value": "Alu", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "FR4", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "PC", "img_url": "https://dummyimage.com/1280x720/cccccc/000"}
+              ]
+            }
+          ]
+        },
+        {
+          "item_id": 100009,
+          "title": "[Weight] QK65",
+          "metaTitle": "Meta Title for [Weight] QK65",
+          "content": "Description for [Weight] QK65",
+          "slug": "/product/qk65-weight",
+          "sku": "WEIGHT",
+          "variants": [
+            {
+              "variant_id": 100010,
+              "title": "Weight",
+              "values": [
+                {"value": "Brass", "img_url": "https://dummyimage.com/1280x720/cccccc/000"},
+                {"value": "Copper", "img_url": "https://dummyimage.com/1280x720/cccccc/000"}
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
