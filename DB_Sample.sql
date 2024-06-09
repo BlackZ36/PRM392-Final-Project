@@ -339,7 +339,27 @@ ADD CONSTRAINT FK_RefreshToken_TokenType FOREIGN KEY (type_id) REFERENCES tokenT
 ALTER TABLE auditLog
 ADD CONSTRAINT FK_AuditLog_Account FOREIGN KEY (account_id) REFERENCES Account(account_id);
 
+--Trigger Zone Begin
+GO
 
+--Trigger update product_item
+CREATE TRIGGER trg_UpdateItemCount
+ON [item]
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE p
+    SET p.item_count = (SELECT COUNT(*) 
+                        FROM [item] i 
+                        WHERE i.product_id = p.product_id)
+    FROM [product] p
+    INNER JOIN inserted ins ON p.product_id = ins.product_id;
+END;
+GO
+
+--Trigger Zone End
 
 -- Thêm dữ liệu vào bảng category
 INSERT INTO category (parent_category_id, title, metaTitle, content, slug, sku, [order])
