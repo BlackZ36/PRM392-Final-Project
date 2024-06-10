@@ -424,17 +424,24 @@ VALUES
 -- Thêm dữ liệu vào bảng Item cho sản phẩm với product_id 100001
 INSERT INTO [Item] (product_id, title, metaTitle, content, slug, sku)
 VALUES
+	--NEO65
     (100001, N'[Case] NEO65', N'Meta Title for [Case] NEO65', N'Description for [Case] NEO65', '/product/neo65-case', 'CASE'),
     (100001, N'[PCB] NEO65', N'Meta Title for [PCB] NEO65', N'Description for [PCB] NEO65', '/product/neo65-pcb', 'PCB'),
     (100001, N'[Plate] NEO65', N'Meta Title for [Plate] NEO65', N'Description for [Plate] NEO65', '/product/neo65-plate', 'PLATE'),
     (100001, N'[Weight] NEO65', N'Meta Title for [Weight] NEO65', N'Description for [Weight] NEO65', '/product/neo65-weight', 'WEIGHT'),
-    (100001, N'[Add-ons] NEO65', N'Meta Title for [Add-ons] NEO65', N'Description for [Add-ons] NEO65', '/product/neo65-add-ons', 'ADDONS');
+    (100001, N'[Add-ons] NEO65', N'Meta Title for [Add-ons] NEO65', N'Description for [Add-ons] NEO65', '/product/neo65-add-ons', 'ADDONS'),
+
+	--QK65
+	(100002, N'[Case] QK65', N'Meta Title for [Case] QK65', N'Description for [Case] QK65', '/product/neo65-case', 'CASE'),
+    (100002, N'[PCB] QK65', N'Meta Title for [PCB] QK65', N'Description for [PCB] QK65', '/product/neo65-pcb', 'PCB'),
+    (100002, N'[Plate] QK65', N'Meta Title for [Plate] QK65', N'Description for [Plate] QK65', '/product/neo65-plate', 'PLATE');
 
 
 -- Bảng variant_value
 INSERT INTO variantValue (variant_id, item_id, value, img_url)
 VALUES
-    -- Case values
+    -- Case values 
+		--NEO65
     (100006, 100001, N'Black', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100006, 100001, N'Green', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100006, 100001, N'Milky White', 'https://dummyimage.com/1280x720/cccccc/000'),
@@ -444,27 +451,43 @@ VALUES
     (100006, 100001, N'Silver', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100006, 100001, N'White', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100006, 100001, N'Yellow', 'https://dummyimage.com/1280x720/cccccc/000'),
+		--QK65
+	(100006, 100006, N'Black', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100006, N'Green', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100006, N'White', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100006, N'Purple', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100006, N'Red', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100006, 100006, N'Silver', 'https://dummyimage.com/1280x720/cccccc/000'),
 
-	-- PCB values
+	-- PCB values 
+		-- NEO65
 	(100007, 100002, N'3 Mode - Hotswap', 'https://dummyimage.com/1280x720/cccccc/000'),
 	(100007, 100002, N'1 Mode - Hotswap', 'https://dummyimage.com/1280x720/cccccc/000'),
 	(100007, 100002, N'1 Mode - Solder', 'https://dummyimage.com/1280x720/cccccc/000'),
+		-- QK65
+	(100007, 100007, N'1 Mode - Hotswap', 'https://dummyimage.com/1280x720/cccccc/000'),
+	(100007, 100007, N'1 Mode - Solder', 'https://dummyimage.com/1280x720/cccccc/000'),
 
-	-- Plate values
+	-- Plate values 
+		--NEO65
 	(100008, 100003, N'Alu', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100008, 100003, N'FR4', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100008, 100003, N'PC', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100008, 100003, N'POM', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100008, 100003, N'Carbon Fiber', 'https://dummyimage.com/1280x720/cccccc/000'),
+		--QK65
+	(100008, 100008, N'Alu', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100008, N'FR4', 'https://dummyimage.com/1280x720/cccccc/000'),
+    (100008, 100008, N'PC', 'https://dummyimage.com/1280x720/cccccc/000'),
 
-	-- Weight values
+	-- Weight values NEO65
     (100010, 100004, N'Brass', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100010, 100004, N'Copper', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100010, 100004, N'Mirror Golden', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100010, 100004, N'Mirror Dusk', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100010, 100004, N'Mirror Chroma', 'https://dummyimage.com/1280x720/cccccc/000'),
 
-	-- Add-ons values
+	-- Add-ons values NEO65
     (100009, 100005, N'Daughter-board + Cable', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100009, 100005, N'O-ring', 'https://dummyimage.com/1280x720/cccccc/000'),
     (100009, 100005, N'Rubber Feet', 'https://dummyimage.com/1280x720/cccccc/000'),
@@ -475,8 +498,12 @@ VALUES
 -- Bảng item_variant
 INSERT INTO ItemVariant (item_id, variant_id)
 VALUES
-    (100001, 100006),
-    (100002, 100007),
-    (100003, 100008),
-    (100004, 100009),
-    (100005, 100010);
+    (100001, 100006), -- case neo65
+    (100002, 100007), -- pcb neo65
+    (100003, 100008), -- plate neo65
+    (100004, 100009), -- weight neo65
+    (100005, 100010), -- add-ons neo65
+
+	(100006, 100006), -- case qk65
+    (100007, 100007), -- pcb qk65
+    (100008, 100008); -- plate qk65
